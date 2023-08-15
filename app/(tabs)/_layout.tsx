@@ -9,8 +9,8 @@ export default function TabLayout() {
         options={{ headerShown: false , tabBarStyle:{display:'none'} }}
          />
          <Tabs.Screen 
-         name='testing'
-         options={{headerShown:false}}
+         name='Scan'
+         options={{headerShown:false ,  tabBarStyle:{display:'none'}} } 
          />
 
     </Tabs>

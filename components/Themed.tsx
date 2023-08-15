@@ -5,7 +5,10 @@
 
 import { Text as DefaultText, useColorScheme, View as DefaultView } from 'react-native';
 
+import { SafeAreaView as SAV} from 'react-native-safe-area-context';
+
 import Colors from '@/constants/Colors';
+import { ReactNode } from 'react';
 
 type ThemeProps = {
   lightColor?: string;
@@ -42,3 +45,11 @@ export function View(props: ViewProps) {
 
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
 }
+
+
+
+export const SafeAreaView=({children}:{children:ReactNode})=>{
+  return(<SAV style={{flex:1}}> {children}</SAV>)
+    
+    
+    }

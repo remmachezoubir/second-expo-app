@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button , TouchableOpacity } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 export default function App() {
-  const [hasPermission, setHasPermission] = useState<boolean|null>(null);
+  const [hasPermission, setHasPermission] = useState<any>(null);
   const [scanned, setScanned] = useState(false);
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === 'granted');
+
     };
 
     getBarCodeScannerPermissions();
   }, []);
 
-  const handleBarCodeScanned = ({ type, data } :any) => {
+  const handleBarCodeScanned = ({ type, data }:any) => {
     setScanned(true);
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
@@ -29,7 +30,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <BarCodeScanner
+              <Text style={{color:'green' }}>
+        Scan the QR Code!</Text>
+        
+
+      <BarCodeScanner 
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       />
@@ -40,8 +45,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    
+    width:'100%' ,
+    height:"100%",
   },
 });
